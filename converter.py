@@ -1,7 +1,27 @@
 from PIL import Image 
 import pytesseract
 
+from pymongo import MongoClient
 from pdf2image import convert_from_path
+
+
+def connect_mongodb():
+    client = MongoClient('localhost', 27017)
+    mydatabase = client['elecvotes']
+    mycollection=mydatabase['user']
+
+    rec={
+    'title': 'MongoDB and Python', 
+    'description': 'MongoDB is no SQL database', 
+    'tags': ['mongodb', 'database', 'NoSQL'], 
+    'viewers': 104 
+    }
+    
+    # inserting the data in the database
+    rec = mycollection.insert_one(rec)
+
+    print (rec)
+
 
 pages = convert_from_path('/home/nopc/Github-Clones/Image-to-text/Mizoram Electoral Votes.pdf')
 
@@ -24,6 +44,7 @@ for j in range ( 10 ):
         sample_obj = img_obj_1.crop((top_left_x,top_left_y, bottom_right_x, bottom_right_y))
         all_data = pytesseract.image_to_string(sample_obj)
         all_data = all_data.replace("\n", " ").strip().split(':')
+        print(all_data)
         print(all_data[-1], all_data[-3])
         top_left_x += 501
         bottom_right_x += 513
