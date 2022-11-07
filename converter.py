@@ -10,17 +10,7 @@ def connect_mongodb():
     mydatabase = client['elecvotes']
     mycollection=mydatabase['user']
 
-    rec = {
-        'title': 'MongoDB and Python', 
-        'description': 'MongoDB is no SQL database', 
-        'tags': ['mongodb', 'database', 'NoSQL'], 
-        'viewers': 104
-    }
-    
-    # inserting the data in the database
-    rec = mycollection.insert_one(rec)
-
-    print (rec)
+    return mycollection
 
 def get_name_relation  ( all_data : list ):
         try:
@@ -80,20 +70,31 @@ def extract_all_data_from_image ():
     bottom_right_x = 414
     bottom_right_y = 325
 
+    collection_data = connect_mongodb()
+
     for j in range ( 10 ):
         for i in range ( 3 ):
             sample_obj = img_obj_1.crop((top_left_x,top_left_y, bottom_right_x, bottom_right_y))
             all_data = pytesseract.image_to_string(sample_obj)
             all_data = all_data.replace("\n", " ").strip().split(':')
-            # print(all_data)
-            # print(all_data[-1], all_data[-3])
             house_number = get_house_number(all_data)
             name, relation = get_name_relation (all_data)
             relation_person_name = get_relation_name ( all_data )
-            gender = all_data[-1]
+            gender = all_data[-1].strip()
 
             print ( "Name ", name, " Relation ", relation, " name ", relation_person_name, " gender ", gender, " house number ", house_number )
             
+            if ( name != "----"):
+                record_for_database = {
+                    "Name": name,
+                    "Relation": relation,
+                    "Relative Name": relation_person_name,
+                    "Gender": gender,
+                    "House Number": house_number
+                }
+
+                collection_data.insert_one(record_for_database)
+
             top_left_x += 501
             bottom_right_x += 513
         
