@@ -4,14 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc && node build/app.js",
+    "dev": "nodemon build/app.js",
+    "watch-ts": "tsc -w",
+    "package": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.17.14",
+    "@types/monk": "^6.0.0",
     "express": "^4.18.2",
     "monk": "^7.3.4",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "typescript": "^4.8.4"
   }
 }
