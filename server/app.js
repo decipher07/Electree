@@ -63,7 +63,7 @@ app.get('/', async (req, res) => {
     }
     
     if ( data.length == 0 )
-        return response;
+        return res.json(response);
       
     response[data[0].Relation] = data[0]['Relative Name']
       
