@@ -37,10 +37,6 @@ app.get('/', async (req, res) => {
     let { name } = req.body ;
     
     var users = db.get('user');
-    
-    // var data = await users.find({ $or : [ { "Name" : name } , { "Relative Name" : name } ] });
-    // console.log(typeof(data));
-    // console.log(data.length)
 
     var data = await users.aggregate([
         {
