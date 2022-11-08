@@ -6,6 +6,10 @@ const app = express();
 const url = process.env.MONGODB_URL
 const db = monk(url)
 
+db.then(() => {
+    console.log('Connected correctly to server')
+})
+  
 app.use(express.json())
 
 async function personDescendant ( name, houseNumber ) {

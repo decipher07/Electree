@@ -1,12 +1,16 @@
 import pytesseract
+import os
 
 from PIL import Image 
 from pymongo import MongoClient
+from pymongo.server_api import ServerApi
 from pdf2image import convert_from_path
-
+from dotenv import load_dotenv
+load_dotenv()
 
 def connect_mongodb():
-    client = MongoClient('localhost', 27017)
+    mongo_url = os.environ.get('MONGODB_URL')
+    client = MongoClient(mongo_url, server_api=ServerApi('1'))
     mydatabase = client['elecvotes']
     mycollection=mydatabase['user']
 
