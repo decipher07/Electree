@@ -1,8 +1,9 @@
 const express = require("express");
 const monk = require ("monk")
+require('dotenv').config();
 
 const app = express();
-const url = 'mongodb://localhost:27017/elecvotes'
+const url = process.env.MONGODB_URL
 const db = monk(url)
 
 app.use(express.json())
@@ -91,4 +92,5 @@ app.get('/', async (req, res) => {
     res.json(response);
 })
 
-app.listen(3000, () => console.log('Server running at Port 3000'));
+const port = process.env.PORT
+app.listen(port, () => console.log(`Server running at Port ${port}`));
