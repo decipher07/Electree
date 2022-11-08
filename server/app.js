@@ -63,10 +63,10 @@ app.get('/', async (req, res) => {
     }
     
     if ( data.length == 0 )
-      return response;
-
+        return response;
+      
     response[data[0].Relation] = data[0]['Relative Name']
-
+      
     for ( person of data[0].heirachy ){
         if ( person['House Number'] == data[0]['House Number']){
             let descendant_data = await personDescendant(person.Name, person['House Number']);
