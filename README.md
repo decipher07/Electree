@@ -43,6 +43,9 @@ npm start
 ---
 [![API Docs ](https://img.shields.io/badge/API%20Docs-View%20Here-orange?style=flat-square&logo=appveyor)](https://documenter.getpostman.com/view/10696212/2s8YehUH4m)
 
+[Project Walkthrough Video](https://drive.google.com/file/d/18_lOqhQCygkMvPlSTzTNGvJtRUIgWuWZ/view?usp=share_link)
+
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
