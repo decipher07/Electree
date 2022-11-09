@@ -3,7 +3,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Electree is an API for getting the family tree from Electoral Roll of various state. It works by parsing the pdf for getting the data and making an entry for the same in a MongoDB Database, Further, a NPM Server spins up to query the data.
+Electree is an API for getting the family tree from Electoral Roll of various state. It works by parsing the pdf for getting the data and making an entry for the same in a MongoDB Database, Further, a Node Server spins up to query the data.
 
 ### Built With
 Built Using Languages and Libraries Listed Below 
@@ -41,7 +41,7 @@ npm start
 ```
 
 ---
-[![API Docs ](https://img.shields.io/badge/API%20Docs-View%20Here-orange?style=flat-square&logo=appveyor)](https://documenter.getpostman.com/view/12931122/TVmPAxAf)
+[![API Docs ](https://img.shields.io/badge/API%20Docs-View%20Here-orange?style=flat-square&logo=appveyor)](https://documenter.getpostman.com/view/10696212/2s8YehUH4m)
 
 <!-- CONTRIBUTING -->
 ## Contributing
